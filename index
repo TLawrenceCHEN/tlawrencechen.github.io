@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type = "text/css">
+			h1 {color: red}
+			p {color: black}
+		</style>
+		<title>陈彤宇的个人主页</title>
+		<meta charset = "UTF-8">
+	</head>
+	<body background = "resource/background.jpg">
+		<h1>陈彤宇</h1>
+		<p>Test</p>
+	</body>
+</html>
