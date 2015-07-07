@@ -1,0 +1,4 @@
+node_modules/*
+package.json
+Gruntfile.js
+src/homepage.css
