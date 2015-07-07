@@ -1,0 +1,130 @@
+body {
+	background-image: url("../image/background.jpg"); 
+	background-position: top;
+}
+a:link {
+	color: #6495ED; 
+	text-decoration: none;
+}
+a:visited {
+	color: purple; 
+	text-decoration: none;
+}
+a:hover {
+	color: #6495ED; 
+	text-decoration: underline;
+}
+#header {
+	padding: 10px;
+}
+#head {
+	border-radius: 50%;
+}
+#main {
+	position: absolute; 
+	left: 10%;
+	right: 10%; 
+	padding: 1%
+}
+#navigate{
+	width: 47%;
+	height: 100px;
+	float: left;
+}
+.navi{
+	float: left;
+	margin-left: 20px;
+}
+#intro {
+	margin-top: 20px;
+	width: 47%; 
+	border-radius: 10px; 
+	background: white; 
+	padding-left: 1%; 
+	padding-right: 1%; 
+	float: left;
+}
+#intro-head {
+	border-bottom: 5px;
+}
+.info {
+	border-bottom: 1px solid #EEE; 
+	bottom: -1px;
+}
+.info dt {
+	float: left; 
+	color: gray
+}
+.info dd {
+	margin-left: 60px; 
+	color: #6495ED;
+}
+#article {
+	width: 47%; 
+	border-radius: 10px; 
+	background: white; 
+	padding-left: 1%; 
+	padding-right: 1%; 
+	float: right;
+}
+#article-head {
+	border-bottom: 5px;
+}
+#article-info p{
+	border-bottom: 1px solid #EEE; 
+	bottom: -1px;
+}
+#hw {
+	width: 47%; 
+	margin-top: 20px; 
+	border-radius: 10px; 
+	background: white; 
+	padding-left: 1%; 
+	padding-right:1%; 
+	float: right;
+}
+#hw-head {
+	border-bottom: 5px;
+}
+#hw-info p{
+	border-bottom: 1px solid #EEE; 
+	bottom: -1px;
+}
+#photo {
+	width: 47%; 
+	margin-top: 20px; 
+	border-radius: 10px; 
+	background: white; 
+	padding-left: 1%; 
+	padding-right: 1%; 
+	padding-bottom: 1%; 
+	float: right;
+}
+#photo-head {
+	border-bottom: 5px;
+}
+.photobox {
+	width: 160px; 
+	height: 160px; 
+	padding-left: 3px; 
+	padding-bottom: 3px; 
+	float: left;
+	border-bottom: 1px solid #EEE; 
+	bottom: -1px;
+}
+#contact {
+	width: 47%; 
+	margin-top: 20px; 
+	border-radius: 10px; 
+	background: white; 
+	padding-left: 1%; 
+	padding-right: 1%; 
+	float: left;
+}
+#contact-head {
+	border-bottom: 5px;
+}
+#footer{
+	margin-top: 10px;
+	float: left;
+}
