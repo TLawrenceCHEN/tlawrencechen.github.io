@@ -1,5 +1,10 @@
 node_modules/*
 package.json
 Gruntfile.js
-css/*
-image/*
+css
+image
+article.html
+article_1.html
+hw.html
+index.html
+photos.html
