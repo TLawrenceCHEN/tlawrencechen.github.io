@@ -1,13 +1,13 @@
 //设置初始按钮是否显示
-if(document.body.scrollTop == 0){
+if(document.documentElement.scrollTop == 0 || window.pageYOffset == 0 || document.documentElement.scrollTop == 0){
 	document.getElementById('backToTop').style.display = 'none';
 }
 //设置回到顶部按钮的默认位置
-var clientW = document.body.clientWidth;
+var clientW = document.documentElement.clientWidth;
 clientW -= 50;
 document.getElementById('backToTop').style.left = clientW + 'px';
-var clientH = window.screen.availHeight;
-clientH -= 150;
+var clientH = document.documentElement.clientHeight;
+clientH -= 50;
 document.getElementById('backToTop').style.top = clientH + 'px';
 //当复选框选中时不允许在文本框输入，同时保证复选框只能选中一个
 function ClickLU(evt){
@@ -84,17 +84,18 @@ document.getElementById('ru').onclick = ClickRU;
 document.getElementById('rd').onclick = ClickRD;
 //设定按钮位置
 function init(evt){
+	debugger;
 	var lu = document.getElementById('lu');
 	var ld = document.getElementById('ld');
 	var ru = document.getElementById('ru');
 	var rd = document.getElementById('rd');
 	if(lu.checked){
-		document.getElementById('backToTop').style.left = '18px';
+		document.getElementById('backToTop').style.left = '5px';
 		document.getElementById('backToTop').style.top = '5px';
 		return;
 	}
 	else if(ld.checked){
-		document.getElementById('backToTop').style.left = '18px';
+		document.getElementById('backToTop').style.left = '5px';
 		document.getElementById('backToTop').style.top = clientH + 'px';
 	}
 	else if(ru.checked){
@@ -110,7 +111,11 @@ function init(evt){
 		var y = document.getElementById('y').value;
 		var xN = parseFloat(x);
 		var yN = parseFloat(y);
-		if(xN > clientW || xN < 0 || yN > clientH || yN < 0 || x == ("") || y == ("")){
+		if(x == ("") && y == ("")){
+			document.getElementById('backToTop').style.left = clientW + 'px';
+			document.getElementById('backToTop').style.top = clientH + 'px';
+		}
+		if(xN > clientW || xN < 0 || yN > clientH || yN < 0){
 			alert("输入位置值不在以下范围内：\n0 ≤ x ≤ " + clientW + "\n0 ≤ y ≤ " + clientH);
 		}
 		else{
@@ -122,17 +127,19 @@ function init(evt){
 document.getElementById('setPos').onclick = init;
 //设置滚动条事件来隐藏按钮
 function scrollFunc(evt){
-	if(document.body.scrollTop == 0){
+	var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+	if(scrollTop == 0){
 		document.getElementById('backToTop').style.display = 'none';
 	}
 	else{
 		document.getElementById('backToTop').style.display = 'inline';
 	}
 }
-document.onscroll = scrollFunc;
+window.onscroll = scrollFunc;
 //设置按钮点击事件来回到顶部
 function ClickToTop(evt){
-	if(document.body.scrollTop != 0){
+	var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+	if(scrollTop != 0){
 		window.scrollBy(0, -50);
 		scrollInterval = setTimeout('ClickToTop()', 30);
 	}
@@ -145,3 +152,10 @@ function KeyUp(evt){
 	}
 }
 window.onkeyup = KeyUp;
+//设置改变窗口时的响应事件
+function Resize(){
+	clientW = document.documentElement.clientWidth - 50;
+	clientH = document.documentElement.clientHeight - 50;
+	init();
+}
+window.onresize = Resize;

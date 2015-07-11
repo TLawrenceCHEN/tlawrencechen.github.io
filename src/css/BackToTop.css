@@ -1,4 +1,4 @@
-body{
+body {
 	background-image: url("../image/background.jpg"); 
 	background-position: top;
 }
@@ -8,14 +8,24 @@ body{
 #head {
 	border-radius: 50%;
 }
+#main {
+	position: absolute;
+	left: 10%;
+	right: 10%;
+	padding: 1%;
+}
 #navigate{
 	width: 47%;
 	height: 100px;
 	float: left;
 }
 .navi{
-	float: left;
-	margin-left: 20px;
+	margin-left: 10px;
+	width: 20%;
+	display: inline;
+}
+.naviimg{
+	width: 20%;
 }
 #mainPresentation{
 	float: left;
@@ -27,7 +37,8 @@ body{
 	border-bottom: 3px solid black;
 }
 #mainImg{
-	margin-left: 70px;
+	margin: 5%;
+	width: 90%
 }
 #backToTop{
 	width: 50px;

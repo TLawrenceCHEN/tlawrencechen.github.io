@@ -32,8 +32,12 @@ a:hover {
 	float: left;
 }
 .navi{
-	float: left;
-	margin-left: 20px;
+	margin-left: 10px;
+	width: 20%;
+	display: inline;
+}
+.naviimg{
+	width: 20%;
 }
 #intro {
 	margin-top: 20px;
@@ -58,6 +62,7 @@ a:hover {
 .info dd {
 	margin-left: 60px; 
 	color: #6495ED;
+	overflow: auto;
 }
 #article {
 	width: 47%; 

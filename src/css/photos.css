@@ -32,8 +32,12 @@ a:hover {
 	float: left;
 }
 .navi{
-	float: left;
-	margin-left: 20px;
+	margin-left: 10px;
+	width: 20%;
+	display: inline;
+}
+.naviimg{
+	width: 20%;
 }
 #allphotos{
 	margin-top: 20px;
