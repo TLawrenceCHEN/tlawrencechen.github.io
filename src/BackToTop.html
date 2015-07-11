@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel = "stylesheet" type = "text/css" href = "css/BackToTop.css"/>
+		<title>第二次作业————返回顶部按钮展示页面</title>
+		<meta charset = 'UTF-8'>
+	</head>
+	<body>
+		<div id = "header" align = "center">
+			<p><img id = "head" align = "middle" src = "image/pro.JPG" width = "150" height = "150"/></p>
+			<p style = "color: white"><font size = "6">陈彤宇</font></p>
+			<p style = "color: white"><font size = "3">清华大学 软件工程</font></p>
+		</div>
+		<hr color = "white"/>
+		<div id = "main">
+			<div id = "navigate">
+				<div class = "navi">
+					<a href = "index.html"><img src = "image/navi1.png" width = "100px" heigth = "100px"/></a>
+				</div>
+				<div class = "navi">
+					<a href = "article.html"><img src = "image/navi2.png" width = "100px" heigth = "100px"/></a>
+				</div>
+				<div class = "navi">
+					<a href = "hw.html"><img src = "image/navi3.png" width = "100px" heigth = "100px"/></a>
+				</div>
+				<div class = "navi">
+					<a href = "photos.html"><img src = "image/navi4.png" width = "100px" heigth = "100px"/></a>
+				</div>
+			</div>
+			<div id = 'mainPresentation'>
+				<h1 align = 'center'>置顶按钮展示页面</h1>
+				<hr/>
+				<div align = 'center'>
+					<br/>
+					<p>如果回到顶部按钮不可见，可能是由于处于网页顶部，请尝试向下拉动滚动条。</p>
+					<dl>
+						<dt>x:<input type = 'number' id = 'x'></input></dt>
+						<dt>y:<input type = 'number' id = 'y'></input></dt>
+					</dl>
+					<input type = 'checkbox' id = 'lu'>LeftUp</input>
+					<input type = 'checkbox' id = 'ld'>LeftDown</input>
+					<input type = 'checkbox' id = 'ru'>RightUp</input>
+					<input type = 'checkbox' id = 'rd'>RightDown</input>
+					<button id = 'setPos'>设定位置</button>
+				</div>
+				<img id = 'mainImg' src = 'image/longPicture.jpeg'/>
+				<div id = 'backToTop'></div>
+			</div>
+		</div>
+	</body>
+	<footer>
+		<script type = 'text/javascript' src = 'js/BackToTop.js'></script>
+	</footer>
+</html>

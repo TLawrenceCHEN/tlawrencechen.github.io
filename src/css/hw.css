@@ -40,11 +40,15 @@ a:hover {
 	background: white;
 	width: 100%;
 	height: 800px;
-	border-radius: 5px;
+	border-radius: 10px;
 	padding: 20px;
 	float: left;
 }
 .hw-info{
 	border-bottom: 1px solid #EEE; 
 	bottom: -1px;
+}
+#footer{
+	margin-top: 10px;
+	float: left;
 }
