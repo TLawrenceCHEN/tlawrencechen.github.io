@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel = "stylesheet" type = "text/css" href = "css/hw.css"/>
-		<title>Web前端作业</title>
-		<meta charset = "UTF-8">
+		<link rel = "stylesheet" type = "text/css" href = "css/PopOut.css"/>
+		<title>弹层组件展示页面</title>
+		<meta charset = 'UTF-8'>
 	</head>
 	<body>
 		<div id = "header" align = "center">
@@ -27,26 +27,22 @@
 					<a href = "photos.html"><img class = 'naviimg' src = "image/navi4.png" width = "100px" heigth = "100px" onMouseOver = "this.src='image/navi4-hover.png'" onMouseOut = "this.src='image/navi4.png'"/></a>
 				</div>
 			</div>
-			<div id = "allhw" style = "border-right: 3px solid black; border-bottom: 3px solid black;">
-				<div id = "allhw-head">
-					<h4>全部作业</h4>
-				</div>
+			<div id = 'mainPresentation'>
+				<h1 align = 'center'>弹层组件展示页面</h1>
 				<hr/>
-				<div id = "allhw-info">
-					<div class = "hw-info">
-						<p><a href = "index.html">第一次作业</a></p>
-					</div>
-					<div class = "hw-info">
-						<p><a href = "BackToTop.html">第二次作业————返回顶部按钮展示页面</a></p>
-					</div>
-					<div class = "hw-info">
-						<p><a href = "PopOut.html">第二次作业————弹层组件展示页面</a></p>
-					</div>
+				<div align = 'center'>
+					<br/>
+					设置内容：<input type = 'text' id = 'content'></input>
+					更改键位：<input type = 'number' id = 'closeKey'></input>
+					<input type = 'checkbox' id = 'drag'>禁止拖拽</input>
+					<br/>
+					<br/>
+					<button id = 'popOut'>弹窗</button>
+					<br/>
+					<br/>
 				</div>
-			</div>
-			<div id = "footer">
-				<p>Copyright © 2015 Chen Tongyu. All rights reserved.</p>
 			</div>
 		</div>
 	</body>
+	<script type = 'text/javascript' src = 'js/PopOut.js'></script>
 </html>
