@@ -42,7 +42,9 @@ $.getJSON("json/imageName0To29.json", function(json){
 });
 $('img').css('width', $('.photo_box').css('width'));
 $('img').attr('alt', '图片加载失败');
-$('.lefttitlebg').css('width', $('.photo_box').css('width'));
+$('.lefttitlebg').css('width', $('.photo_column').css('width'));
+$('.lefttitlebg').attr('alt', '图片加载失败');
+$('.righttitlebg').css('width', $('.photo_column').css('width'));
 $('.righttitlebg').attr('alt', '图片加载失败');
 //获取整个文档长宽
 var documentW = $(document).width();
