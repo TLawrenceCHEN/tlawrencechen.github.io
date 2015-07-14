@@ -35,13 +35,13 @@ function setPhotos(max, json){
 		$photo_box[i].css('border-radius', '20px');
 		$photo_column[i % 4].append($photo_box[i]);
 		$photo_box[i].append("<img src = '" + json.image[i].path + "'>");
-		$('img').css('width', $photo_box[0].css('width'));
-		$('img').attr('alt', '图片加载失败');
 	}
 }
 $.getJSON("json/imageName0To29.json", function(json){
 	setPhotos(30, json);
 });
+$('img').css('width', $photo_box[0].css('width'));
+$('img').attr('alt', '图片加载失败');
 //获取整个文档长宽
 var documentW = $(document).width();
 var documentH = $(document).height();
