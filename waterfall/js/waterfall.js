@@ -25,8 +25,6 @@ for(var i = 0; i < 4; i++){
 function setPhotos(max, json){
 	for(var i = 0; i < max; i++){
 		var $photo_box = [];
-		$('img').css('width', $photo_box[0].css('width'));
-		$('img').attr('alt', '图片加载失败');
 		$photo_box[i] = $('<div/>');
 		$photo_box[i].attr('id', 'photo' + i);
 		$photo_box[i].attr('class', 'photo_box');
@@ -37,6 +35,8 @@ function setPhotos(max, json){
 		$photo_box[i].css('border-radius', '20px');
 		$photo_column[i % 4].append($photo_box[i]);
 		$photo_box[i].append("<img src = '" + json.image[i].path + "'>");
+		$('img').css('width', $photo_box[0].css('width'));
+		$('img').attr('alt', '图片加载失败');
 	}
 }
 $.getJSON("json/imageName0To29.json", function(json){
