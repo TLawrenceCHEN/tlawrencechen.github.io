@@ -55,6 +55,7 @@ for(var i = 0; i < 6; i++){
 	var str = "url('bg/bg" + i + ".jpg')";
 	$bg[i] = $('<div/>');
 	$bg[i].css('background-image', str);
+	$bg[i].css('background-repeat', 'repeat');
 	$bg[i].css('left', '0px');
 	$bg[i].css('top', '0px');
 	$bg[i].css('width', '100%');
