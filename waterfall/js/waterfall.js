@@ -39,7 +39,7 @@ function setPhotos(max, json){
 		$photo_box[i].append("<img src = '" + json.image[i].path + "'>");
 	}
 }
-$.getJSON("json/imageName0To29", function(json){
+$.getJSON("json/imageName0To29.json", function(json){
 	setPhotos(30, json);
 });
 //获取整个文档长宽
