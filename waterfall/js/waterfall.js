@@ -40,7 +40,7 @@ function setPhotos(max, json){
 $.getJSON("json/imageName0To29.json", function(json){
 	setPhotos(30, json);
 });
-$('img').css('width', $photo_box[0].css('width'));
+$('img').css('width', $('.photo_box').css('width'));
 $('img').attr('alt', '图片加载失败');
 //获取整个文档长宽
 var documentW = $(document).width();
