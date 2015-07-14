@@ -1,0 +1,55 @@
+@font-face{
+	font-family: xingkai;
+	src: url('../font/xingkai.ttf');
+}
+img{
+	display: block;
+}
+.lefttitle{
+	font-family: xingkai;
+	font-size: 60px;
+	width: 60px;
+	left: 35px;
+	top: 100px;
+	float: left;
+	position: fixed;
+}
+.leftsubtitle{
+	font-family: xingkai;
+	font-size: 50px;
+	width: 50px;
+	float: left;
+	left: 110px;
+	top: 100px;
+	position: fixed;
+}
+.righttitle{
+	font-family: xingkai;
+	font-size: 60px;
+	width: 60px;
+	right: 20px;
+	top: 100px;
+	float: right;
+	position: fixed;
+}
+.rightsubtitle{
+	font-family: xingkai;
+	font-size: 50px;
+	width: 50px;
+	float: right;
+	right: 100px;
+	top: 100px;
+	position: fixed;
+}
+.lefttitlebg{
+	top: 70px;
+	left: 0px;
+	position: fixed;
+	z-index: -1;
+}
+.righttitlebg{
+	top: 70px;
+	right: 0px;
+	position: fixed;
+	z-index: -1;
+}
