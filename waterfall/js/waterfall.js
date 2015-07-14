@@ -70,7 +70,9 @@ for(var i = 0; i < 6; i++){
 }
 var scrollToBottomTimes = 1;
 $(window).scroll(function(){
+	documentH = $(document).height();
 	for(var i = 0; i < 6; i++){
+		$bg[i].css('height', documentH + 'px');
 		if($(document).scrollTop() > (i * (documentH - clientH) / 6) && 
 			$(document).scrollTop() <= ((i + 1) * (documentH - clientH) / 6) && 
 			$bg[i].css('display') === 'none'){
