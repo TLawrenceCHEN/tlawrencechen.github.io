@@ -321,6 +321,8 @@ for(var i = 0; i < 120; i++){
 		if($numPage.text() === '1/3'){
 			$prePage.css('color', 'gray');
 			$prePage.css('cursor', 'text');
+			$nextPage.css('color', '#6495ED');
+			$nextPage.css('cursor', 'pointer');
 		}
 		$.getJSON('json/location.json', function(json){
 			var str1, str2;
