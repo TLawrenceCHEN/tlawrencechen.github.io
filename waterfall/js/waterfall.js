@@ -77,7 +77,6 @@ function setPhotos(max, json){
 			$(this).css('left', '');
 			$(this).css('top', '');
 			columnHeight[tar] += imgHeight;
-			debugger;
 			if($(this).attr('id') == photoNum - 1){
 				$('.spinner').css('display', 'none');
 			}
