@@ -1,5 +1,3 @@
-$(window).css('min-width', '1000px');
-
 var photoNum = 0;
 var curPhotoIndex = 0;
 var curscrollTopPos = 0;
@@ -31,7 +29,7 @@ for(var i = 0; i < 4; i++){
 //初始化照片放置区域
 var $photo_box = [];
 var $photo = [];
-for(var i = 0; i < 90; i++){
+for(var i = 0; i < 120; i++){
 	$photo_box[i] = $('<div/>');
 	$photo_box[i].attr('class', 'photo_box');
 	$photo_box[i].attr('id', 'box' + i);
@@ -47,9 +45,14 @@ for(var i = 0; i < 90; i++){
 }
 //获取照片
 function setPhotos(max, json){
+	//正在加载页面
+	$('.spinner').css('display', 'inline-block');
+	$('.spinner').css('left', clientW / 2  - 30 + 'px');
+	$('.spinner').css('top', clientH / 2 - 30 + 'px');
+	$('.spinner').css('position', 'fixed');
 	for(var i = photoNum; i < photoNum + max; i++){
 		$photo_box[i].css('display', 'block');
-		$photo[i].attr('src', json.image[i - photoNum].path);
+		$photo[i].attr('src', json.image.path[i - photoNum]);
 		$photo[i].css('opacity', '0');
 		$photo[i].css('width', $photo_column[0].width());
 		$photo[i].css('position', 'fixed');
@@ -74,6 +77,10 @@ function setPhotos(max, json){
 			$(this).css('left', '');
 			$(this).css('top', '');
 			columnHeight[tar] += imgHeight;
+			debugger;
+			if($(this).attr('id') == photoNum - 1){
+				$('.spinner').css('display', 'none');
+			}
 		});
 	}
 	photoNum += max;
@@ -267,13 +274,19 @@ $(window).scroll(function(){
 		});
 		scrollToBottomTimes++;
 	}
+	else if($(document).scrollTop() <= (documentH - clientH) && $(document).scrollTop() >= (documentH - clientH - 300) && scrollToBottomTimes == 3){
+		$.getJSON("json/imageName90To119.json", function(json){
+			setPhotos(30, json);
+		});
+		scrollToBottomTimes++;
+	}
 });
 $('.lefttitlebg').css('width', $('.photo_column').css('width'));
 $('.lefttitlebg').attr('alt', '图片加载失败');
 $('.righttitlebg').css('width', $('.photo_column').css('width'));
 $('.righttitlebg').attr('alt', '图片加载失败');
 //点击图片查看大图事件以及鼠标悬停动画
-for(var i = 0; i < 90; i++){
+for(var i = 0; i < 120; i++){
 	$photo[i].mouseover(function(){
 		$(this).css({'-webkit-animation': 'in 0.5s', 
 					'animation-fill-mode': 'forwards'});
@@ -301,6 +314,7 @@ for(var i = 0; i < 90; i++){
 		$closeButton.css('height', '20px');
 		curscrollTopPos = $(document).scrollTop();
 		//设置评论区
+		$numPage.text('1/3');
 		$.getJSON('json/comment0To3.json', function(json){
 			getComment(curPhotoIndex, 4, json);
 		});
