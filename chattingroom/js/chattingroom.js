@@ -143,8 +143,6 @@ $(window).unload(function(){
 		nameRef.child(newKey.path.n[1]).remove();
 	}
 });
-//Handling the disconnect event
-//Firebase.goOnline();
 //Handling the resize event
 $(window).resize(function(){
 	winW = $(window).width();
