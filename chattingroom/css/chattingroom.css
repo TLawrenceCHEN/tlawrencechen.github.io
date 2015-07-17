@@ -1,0 +1,127 @@
+@font-face{
+	font-family: Microsoft YaHei;
+	src: url('../font/msyh.ttf');
+}
+#main{
+	width: auto;
+	height: 465px;
+	left: 320px;
+	top: 100px;
+	position: absolute;
+	border: #fffcbd 10px solid;
+	border-radius: 20px;
+}
+#userList{
+	font-family: Microsoft YaHei;
+	color: white;
+	background-color: #535353;
+	padding: 5px;
+	width: 200px;
+	height: 455px;
+	margin-right: 1px;
+	display: inline-block;
+	border-radius: 10px;
+	border: lightblue 1px solid;
+	overflow-y: auto;
+}
+#chattingMain{
+	font-family: Microsoft YaHei;
+	color: white;
+	background-color: #535353;
+	padding: 10px;
+	width: 490px;
+	height: 285px;
+	display: inline-block;
+	border-radius: 10px;
+	border: lightblue 1px solid;
+	top: 0px;
+	position: absolute;
+	overflow-y: auto;
+	overflow-x: ;
+}
+#userInput{
+	background-color: #535353;
+	padding: 5px;
+	width: 500px;
+	height: 145px;
+	display: inline-block;
+	border-radius: 5px;
+	border: lightblue 1px solid;
+	position: relative;
+	bottom: 14px;
+}
+#text{
+	font-family: Microsoft YaHei;
+	color: white;
+	background-color: #535353;
+	padding: 10px;
+	width: 476px;
+	height: 100px;
+	border: 0px;
+	border-radius: 5px;
+	overflow-y: auto;
+}
+#send{
+	font-family: Microsoft YaHei;
+	border-radius: 5px;
+	width: 50px;
+	float: right;
+}
+#userName{
+	font-family: Microsoft YaHei;
+	font-size: 15px;
+	width: 210px;
+	height: 25px;
+	display: inline-block;
+}
+#setName{
+	background-image: url("../bg/button1.png");
+	color: white;
+	height: 32px;
+	border-radius: 5px;
+	float: right;
+}
+#setName:hover{
+	background-image: url("../bg/button1_hover.png");
+	color: white;
+	height: 32px;
+	border-radius: 5px;
+	float: right;
+}
+#curUser{
+	color: pink;
+	left: 7px;
+	position: relative;
+	font-size: 12px;
+}
+#send{
+	background-image: url("../bg/button2.png");
+	border-radius: 5px;
+	color: white;
+}
+#send:hover{
+	background-image: url("../bg/button2_hover.png");
+	border-radius: 5px;
+	color: white;
+}
+.names{
+	font-family: Microsoft YaHei;
+	display: block;
+	margin-bottom: 5px;
+}
+.messages{
+	font-family: Microsoft YaHei;
+	display: block;
+	word-break: break-all;
+	margin-bottom: 5px;
+}
+
+body{
+	background-image: url("../bg/bg.jpg");
+}
+p{
+	font-family: Microsoft YaHei;
+}
+button{
+	font-family: Microsoft YaHei;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<link rel='stylesheet' type='text/css' href='css/chattingroom.css'>
+		<title>我的聊天室</title>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+	</head>
+	<body>
+		<div id='main'>
+			<div id='userList'>
+				<p align='center' style='font-size: 20px; color: #6495ED' width='100%'>当前用户</p>
+			</div>
+			<div id='chattingMain'></div>
+			<div id='userInput'>
+				<textarea id='text' placeholder='你的发言'></textarea>
+				<span id='curUser' style='display: inline'>当前用户：</span>
+				<button id='send'>发送</button>
+			</div>
+		</div>
+		<script src='js/chattingroom.js'></script>
+	</body>
+</html>
