@@ -125,7 +125,7 @@ refDB.child("userName").on('child_removed', function(oldChildSnapshot){
 		}
 	}
 });
-//Listen to the keypress event for shortcut key
+//Handling the keypress event for shortcut key
 $('#userName').keyup(function(event){
 	if(event.keyCode === 13){
 		setUserName();
@@ -136,7 +136,7 @@ $('#text').keyup(function(){
 		sendMessage();
 	}
 });
-//Listen to the close window event or refresh window event for data change
+//Handling the close window event or refresh window event for data change
 $(window).unload(function(){
 	var nameRef = refDB.child("userName");
 	if(newKey){
@@ -144,4 +144,15 @@ $(window).unload(function(){
 	}
 });
 //Handling the disconnect event
-Firebase.goOnline();
+//Firebase.goOnline();
+//Handling the resize event
+$(window).resize(function(){
+	winW = $(window).width();
+	winH = $(window).height();
+	popout_window.css({
+		'left': winW / 2 - 142 + 'px',
+		'right': winW / 2 - 142 + 'px',
+		'top': winH / 2 - 50 + 'px',
+		'bottom': winH / 2 - 50 + 'px',
+	});
+});
