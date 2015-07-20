@@ -57,37 +57,37 @@ function initGame(){
 				if(json.map[i][j]){
 					var color;
 					switch(json.map[i][j]){
-					case 1:
+					case '1':
 						color = 'red';
 						break;
-					case 2:
+					case '2':
 						color = 'blue';
 						break;
-					case 3:
+					case '3':
 						color = 'yellow';
 						break;
-					case 4:
+					case '4':
 						color = 'green';
 						break;
-					case 5:
+					case '5':
 						color = 'orange';
 						break;
-					case 6:
+					case '6':
 						color = 'white';
 						break;
-					case 7:
+					case '7':
 						color = 'brown';
 						break;
-					case 8:
+					case '8':
 						color = 'cyan';
 						break;
-					case 9:
+					case '9':
 						color = 'purple';
 						break;
-					case 10:
+					case '10':
 						color = 'pink';
 						break;
-					case 11:
+					case '11':
 						color = 'gray';
 						break;
 					}
