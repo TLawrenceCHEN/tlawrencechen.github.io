@@ -97,6 +97,11 @@ function initGame(){
 			}
 		}
 	});
+	// for(var i = 0; i < 27; i++){
+	// 	for(var j = 0; j < 27; j++){
+	// 		drawBlock(j, i);
+	// 	}
+	// }
 	//绘制中心及托条	
 	drawBar(-74, -99);
 	drawCenter();
