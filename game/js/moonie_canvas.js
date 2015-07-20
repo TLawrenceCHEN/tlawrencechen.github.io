@@ -92,17 +92,12 @@ function initGame(){
 						break;
 					}
 					map[i][j].color = color;
-					console.log(color);
 					drawBlock(j, i);
+					blockNum++;
 				}
 			}
 		}
 	});
-	// for(var i = 0; i < 27; i++){
-	// 	for(var j = 0; j < 27; j++){
-	// 		drawBlock(j, i);
-	// 	}
-	// }
 	//绘制中心及托条	
 	drawBar(-74, -99);
 	drawCenter();
@@ -193,14 +188,18 @@ function drawBall(ball){
 }
 //当前游戏结束
 function GameOver(){
-	//先判断砖块是否清空
-	//else..
-		window.cancelAnimationFrame(animationID_1);
-		window.cancelAnimationFrame(animationID_in_1);
-		window.cancelAnimationFrame(animationID_2);
-		window.cancelAnimationFrame(animationID_in_2);
+	window.cancelAnimationFrame(animationID_1);
+	window.cancelAnimationFrame(animationID_in_1);
+	window.cancelAnimationFrame(animationID_2);
+	window.cancelAnimationFrame(animationID_in_2);
+	//判断砖块是否清空
+	if(blockNum === 0){
+		curLevel++;
+	}
+	else{
 		alert("Game Over!");
-		initGame();
+	}
+	initGame();
 }
 //===========================================碰撞检测===============================================
 //判断小球是否与托条碰撞函数
@@ -277,7 +276,7 @@ function barCollisionDetect(){
 			else{
 				ball.angle = ball_angle_center_coord - angle_In;
 			}
-			ball.angle += bar.omega;
+			ball.angle += bar.omega * 2;
 			while(ball.angle > 360){
 				ball.angle -= 360;
 			}
@@ -310,10 +309,10 @@ function barCollisionDetect(){
 			}
 			return true;
 		}
-		else if(Math.pow(ballX_center_coord, 2) + Math.pow(ballY_center_coord + 12, 2) <= Math.pow(71, 2) && 
-				Math.pow(ballX_center_coord + 12, 2) + Math.pow(ballY_center_coord, 2) <= Math.pow(71, 2) && 
-				Math.pow(ballX_center_coord + 12, 2) + Math.pow(ballY_center_coord + 24, 2) <= Math.pow(71, 2) && 
-				Math.pow(ballX_center_coord + 24, 2) + Math.pow(ballY_center_coord + 12, 2) <= Math.pow(71, 2))
+		else if(Math.pow(ballX_center_coord, 2) + Math.pow(ballY_center_coord + 12, 2) <= Math.pow(70, 2) && 
+				Math.pow(ballX_center_coord + 12, 2) + Math.pow(ballY_center_coord, 2) <= Math.pow(70, 2) && 
+				Math.pow(ballX_center_coord + 12, 2) + Math.pow(ballY_center_coord + 24, 2) <= Math.pow(70, 2) && 
+				Math.pow(ballX_center_coord + 24, 2) + Math.pow(ballY_center_coord + 12, 2) <= Math.pow(70, 2))
 		{
 			//小球完全进入中心，游戏结束
 			isGameOver = true;
@@ -328,6 +327,12 @@ function barCollisionDetect(){
 //判断小球与砖块是否碰撞
 function crashBlock(ballx,bally,changeX,changeY)
 {
+	if(ball.x + 2 * ball.radius >= 1350 || 
+		ball.x <= 0 || 
+		ball.y + 2 * ball.radius >= 621 || 
+		ball.y <= 0){
+		return null;
+	}
 	var judge = new Array();
 	var isVisible = false;
 	var xx, yy, disx, disy;
@@ -617,8 +622,18 @@ function MainUpdate(){
 		//获取小球当前位置
 		var curX = ball.x;
 		var curY = ball.y;
-		console.log(ball.x);
-		console.log(ball.y);
+		console.log(curX);
+		console.log(curY);
+		//判断是否出界
+		if(ball.x >= 1360 || 
+			ball.x + 2 * ball.radius <= -10 || 
+			ball.y >= 663 || 
+			ball.y + 2 * ball.radius <= -10){
+			isGameOver = true;
+			cxt.clearRect(curX, curY, 2 * ball.radius, 2 * ball.radius);
+			GameOver();
+			return;
+		}
 		//判断是否发生碰撞
 		var judgeCrashBlock;
 		if(!barCollisionDetect()){
@@ -634,6 +649,7 @@ function MainUpdate(){
 		if (judgeCrashBlock != null)
 		{
 			map[judgeCrashBlock[1]][judgeCrashBlock[2]].visible = false;
+			blockNum--;
 			cxt.clearRect(judgeCrashBlock[2] * 50, judgeCrashBlock[1] * 23, 50, 23);
 			ball.angle = changeBallAngle(ball.angle,judgeCrashBlock[0]);
 			ball.x -= deltaX;
@@ -644,15 +660,12 @@ function MainUpdate(){
 		//判断该区域内的砖块是否需要显示并绘制
 		for(var i = Math.floor(curY / 23); i < Math.ceil((curY + 2 * ball.radius) / 23); i++){
 			for(var j = Math.floor(curX / 50); j < Math.ceil((curX + 2 * ball.radius) / 50); j++){
-				if(map[i][j].visible){
+				if(i >= 0 && i < 27 && j >= 0 && j < 27 && map[i][j].visible){
 					drawBlock(j, i);
 				}
 			}
 		}
-		if(ball.x + 2 * ball.radius >= 1300 || 
-			ball.x <= 50 || 
-			ball.y + 2 * ball.radius >= 598 || 
-			ball.y <= 23){
+		if(blockNum === 0){
 			isGameOver = true;
 			GameOver();
 		}
@@ -687,7 +700,7 @@ function CenterRotate(){
 		ball.x += 113 * Math.sin(ball.angle * Math.PI / 180) - 113 * Math.sin(oldArg * Math.PI / 180);
 		ball.y -= 113 * Math.cos(ball.angle * Math.PI / 180) - 113 * Math.cos(oldArg * Math.PI / 180);
 	}
-	bar.omega = bar.translateAngle / 16.667;
+	bar.omega = bar.translateAngle;
 	bar.translateAngle = 0;
 	//绘制托条，中心，若小球在托条上，则绘制小球
 	drawBar(-74, -99);
