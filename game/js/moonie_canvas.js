@@ -51,7 +51,7 @@ function initGame(){
 	ball = new Ball();
 	//设置砖块数组
 	//绘制砖块(目前为铺满全屏，随机颜色)
-	$.getJSON("../json/level_" + curLevel + ".json", function(json){
+	$.getJSON("json/level_" + curLevel + ".json", function(json){
 		for(var i = 0; i < 27; i++){
 			for(var j = 0; j < 27; j++){
 				if(json.map[i][j]){
@@ -92,7 +92,7 @@ function initGame(){
 						break;
 					}
 					map[i][j].color = color;
-					drawBlock(j * 50, i * 23);
+					drawBlock(j, i);
 				}
 			}
 		}
