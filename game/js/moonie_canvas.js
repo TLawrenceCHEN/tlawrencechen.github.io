@@ -54,7 +54,7 @@ function initGame(){
 	$.getJSON("json/level_" + curLevel + ".json", function(json){
 		for(var i = 0; i < 27; i++){
 			for(var j = 0; j < 27; j++){
-				if(json.map[i][j]){
+				if(json.map[i][j] != '0'){
 					var color;
 					switch(json.map[i][j]){
 					case '1':
@@ -92,6 +92,7 @@ function initGame(){
 						break;
 					}
 					map[i][j].color = color;
+					console.log(color);
 					drawBlock(j, i);
 				}
 			}
