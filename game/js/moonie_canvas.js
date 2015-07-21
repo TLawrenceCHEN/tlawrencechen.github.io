@@ -4,7 +4,7 @@ var isGameOver;
 //游戏暂停标志
 var isPause;
 //关卡变量
-var curLevel = 5;
+var curLevel = 1;
 //砖块总数
 var blockNum = 0;
 //指示界面中是否有Bonus
@@ -83,8 +83,6 @@ function initGame(){
 	bar = new Bar(0, 0);
 	//设置小球
 	ball = new Ball();
-	//指示关卡数
-	curLevel = 1;
 	//指示界面中是否有Bonus
 	bonusAdded = false;
 	//指示界面中是否有3个球
@@ -1059,6 +1057,9 @@ $(window).keyup(function(event){
 				}
 				else if(ball.y > 311){
 					ball.angle = Math.atan((675 - ball.x) / (ball.y - 311)) * 180 / Math.PI;
+					if(ball.angle < 0){
+						ball.angle += 360;
+					}
 				}
 			}
 		}
@@ -1082,6 +1083,9 @@ $(window).keyup(function(event){
 				}
 				else if(ball1.y > 311){
 					ball1.angle = Math.atan((675 - ball1.x) / (ball1.y - 311)) * 180 / Math.PI;
+					if(ball1.angle < 0){
+						ball1.angle += 360;
+					}
 				}
 			}
 		}
@@ -1105,6 +1109,9 @@ $(window).keyup(function(event){
 				}
 				else if(ball2.y > 311){
 					ball2.angle = Math.atan((675 - ball2.x) / (ball2.y - 311)) * 180 / Math.PI;
+					if(ball2.angle < 0){
+						ball2.angle += 360;
+					}
 				}
 			}	
 		}
@@ -1112,8 +1119,6 @@ $(window).keyup(function(event){
 	if(event.keyCode === 13){
 		if(!isPause){
 			isPause = true;
-			window.cancelAnimationFrame(animationID_1);
-			window.cancelAnimationFrame(animationID_in_1);
 			window.cancelAnimationFrame(animationID_2);	
 			window.cancelAnimationFrame(animationID_in_2);
 			if (bonusAdded)
@@ -1122,10 +1127,20 @@ $(window).keyup(function(event){
 				window.cancelAnimationFrame(animationID_in_Bonus);
 			}
 
-			if (ballsAdded)
+			if (typeof ball != "undefined")
+			{
+				window.cancelAnimationFrame(animationID_1);
+				window.cancelAnimationFrame(animationID_in_1);
+			}
+
+			if (typeof ball1 != "undefined")
 			{
 				window.cancelAnimationFrame(animationID_Ball1);
 				window.cancelAnimationFrame(animationID_in_Ball1);
+			}
+
+			if (typeof ball2 != "undefined")
+			{
 				window.cancelAnimationFrame(animationID_Ball2);	
 				window.cancelAnimationFrame(animationID_in_Ball2);
 			}
@@ -1139,16 +1154,24 @@ $(window).keyup(function(event){
 		}
 		else{
 			isPause = false;
-			animationID_1 = window.requestAnimationFrame(MainUpdate);
 			animationID_2 = window.requestAnimationFrame(CenterRotate);
 			if (bonusAdded)
 			{
 				animationID_Bonus = window.requestAnimationFrame(BonusRotate);
 			}
+			debugger;
+			if (typeof ball != "undefined")
+			{
+				animationID_1 = window.requestAnimationFrame(MainUpdate);
+			}
 
-			if (ballsAdded)
+			if (typeof ball1 != "undefined")
 			{
 				animationID_Ball1 = window.requestAnimationFrame(BallOneUpdate);
+			}
+
+			if (typeof ball2 != "undefined")
+			{
 				animationID_Ball2 = window.requestAnimationFrame(BallTwoUpdate);
 			}
 			drawCenter();
@@ -1171,10 +1194,11 @@ function MainUpdate(){
 			ball.y >= 663 || 
 			ball.y + 2 * ball.radius <= -10){
 			totalBall = totalBall - 1;
+			cxt.clearRect(curX, curY, 2 * ball.radius, 2 * ball.radius);
+			ball = undefined;
 		    if (totalBall == 0)
 		    {
 		    	isGameOver = true;
-		    	cxt.clearRect(curX, curY, 2 * ball.radius, 2 * ball.radius);
 		    	GameOver();
 		    }
 			return;
@@ -1261,10 +1285,11 @@ function BallOneUpdate(){
 			ball1.y >= 663 || 
 			ball1.y + 2 * ball1.radius <= -10){
 			totalBall = totalBall - 1;
+			cxt.clearRect(curX, curY, 2 * ball1.radius, 2 * ball1.radius);
+			ball1 = undefined;
 		    if (totalBall == 0)
 		    {
 		    	isGameOver = true;
-		    	cxt.clearRect(curX, curY, 2 * ball1.radius, 2 * ball1.radius);
 		    	GameOver();
 		    }
 			return;
@@ -1351,10 +1376,11 @@ function BallTwoUpdate(){
 			ball2.y >= 663 || 
 			ball2.y + 2 * ball2.radius <= -10){
 			totalBall = totalBall - 1;
+		    cxt.clearRect(curX, curY, 2 * ball2.radius, 2 * ball2.radius);
+		    ball2 = undefined;
 		    if (totalBall == 0)
 		    {
 		    	isGameOver = true;
-		    	cxt.clearRect(curX, curY, 2 * ball2.radius, 2 * ball2.radius);
 		    	GameOver();
 		    }
 			return;
@@ -1440,25 +1466,29 @@ function CenterRotate(){
 	if(bar.angle < -180){
 		bar.angle += 360;
 	}
-	if(ball.isOnTheBar){
-		var oldArg = ball.angle;
-		ball.angle += bar.translateAngle;
-		if(ball.angle > 360){
-			ball.angle -= 360;
+	if(typeof ball != 'undefined'){
+		if(ball.isOnTheBar){
+			var oldArg = ball.angle;
+			ball.angle += bar.translateAngle;
+			if(ball.angle > 360){
+				ball.angle -= 360;
+			}
+			if(ball.angle < 0){
+				ball.angle += 360;
+			}
+			ball.x += 113 * Math.sin(ball.angle * Math.PI / 180) - 113 * Math.sin(oldArg * Math.PI / 180);
+			ball.y -= 113 * Math.cos(ball.angle * Math.PI / 180) - 113 * Math.cos(oldArg * Math.PI / 180);
 		}
-		if(ball.angle < 0){
-			ball.angle += 360;
-		}
-		ball.x += 113 * Math.sin(ball.angle * Math.PI / 180) - 113 * Math.sin(oldArg * Math.PI / 180);
-		ball.y -= 113 * Math.cos(ball.angle * Math.PI / 180) - 113 * Math.cos(oldArg * Math.PI / 180);
 	}
 	bar.omega = bar.translateAngle;
 	bar.translateAngle = 0;
 	//绘制托条，中心，若小球在托条上，则绘制小球
 	drawBar(-74, -99);
 	drawCenter();
-	if(ball.isOnTheBar){
-		drawBall(ball);
+	if(typeof ball != 'undefined'){
+		if(ball.isOnTheBar){
+			drawBall(ball);
+		}
 	}
 	animationID_in_2 = window.requestAnimationFrame(CenterRotate);
 }
@@ -1499,14 +1529,14 @@ function BonusRotate () {
 				case "speed_up":
 				if (typeof ball != "undefined") ball.speed = 5;
 				if (typeof ball1 != "undefined") ball1.speed = 5;
-				if (typeof ball2 != "undefined") ball1.speed = 5;
+				if (typeof ball2 != "undefined") ball2.speed = 5;
 				setTimeout("recoverSpeed()",5000);
 				break;
 
 				case "speed_down":
 				if (typeof ball != "undefined") ball.speed = 1;
 				if (typeof ball1 != "undefined") ball1.speed = 1;
-				if (typeof ball2 != "undefined") ball1.speed = 1;
+				if (typeof ball2 != "undefined") ball2.speed = 1;
 				setTimeout("recoverSpeed()",5000);
 				break;
 
@@ -1526,7 +1556,7 @@ function BonusRotate () {
 				case "iron_ball":
 				if (typeof ball != "undefined") ball.needToChangeAngle = false;
 				if (typeof ball1 != "undefined") ball1.needToChangeAngle = false;
-				if (typeof ball2 != "undefined") ball1.needToChangeAngle = false;
+				if (typeof ball2 != "undefined") ball2.needToChangeAngle = false;
 				setTimeout("recoverChangeAngle()", 5000);
 				break;
 
@@ -1563,7 +1593,7 @@ function recoverSpeed()
 {
 	if (typeof ball != "undefined") ball.speed = 3;
 	if (typeof ball1 != "undefined") ball1.speed = 3;
-	if (typeof ball2 != "undefined") ball1.speed = 3;
+	if (typeof ball2 != "undefined") ball2.speed = 3;
 }
 
 //恢复needToChangeAngle
@@ -1571,7 +1601,7 @@ function recoverChangeAngle()
 {
 	if (typeof ball != "undefined") ball.needToChangeAngle = true;
 	if (typeof ball1 != "undefined") ball1.needToChangeAngle = true;
-	if (typeof ball2 != "undefined") ball1.needToChangeAngle = true;
+	if (typeof ball2 != "undefined") ball2.needToChangeAngle = true;
 }
 //播放撞砖块音效
 function addCrashMusic()

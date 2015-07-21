@@ -25,7 +25,7 @@ helpInfoLeft.css('display', 'none');
 helpInfoLeft.append('<p>SPACE：释放小球/拉回小球</p>').
 			append('<p>ENTER: 暂停游戏</p>').
 			append('<p>鼠标移动控制托条方位</p>').
-			append('<p>小球落入中心黑洞或逃离边界之外游戏结束</p>');
+			append('<p>小球落入中心黑洞或逃离边界之外损失生命。总计4条生命，全部损失游戏结束</p>');
 $('body').append(helpInfoLeft);
 var helpInfoRight = $('<div id="infoRight"/>');
 helpInfoRight.css('display', 'none');
