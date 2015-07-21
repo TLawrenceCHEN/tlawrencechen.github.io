@@ -1,0 +1,14 @@
+[
+  {"x":"18", "y":"16", "bonus":"speed_up"},
+  {"x":"10", "y":"9", "bonus":"speed_up"},
+  {"x":"7", "y":"21", "bonus":"speed_up"},
+  {"x":"4", "y":"15", "bonus":"speed_down"},
+  {"x":"16", "y":"18", "bonus":"speed_down"},
+  {"x":"22", "y":"12", "bonus":"iron_ball"},
+  {"x":"24", "y":"13", "bonus":"iron_ball"},
+  {"x":"20", "y":"14", "bonus":"three_balls"},
+  {"x":"8", "y":"20", "bonus":"three_balls"},
+  {"x":"2", "y":"17", "bonus":"gameover"},
+  {"x":"3", "y":"16", "bonus":"gameover"},
+  {"x":"13", "y":"24", "bonus":"gameover"}
+]

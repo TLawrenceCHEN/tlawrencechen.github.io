@@ -1,0 +1,7 @@
+[
+  {"x":"2", "y":"14", "bonus":"speed_up"},
+  {"x":"4", "y":"16", "bonus":"speed_down"},
+  {"x":"9", "y":"21", "bonus":"iron_ball"},
+  {"x":"18", "y":"20", "bonus":"three_balls"},
+  {"x":"22", "y":"16", "bonus":"gameover"}
+]
