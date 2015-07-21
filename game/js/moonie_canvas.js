@@ -1040,24 +1040,73 @@ $(window).mousemove(function(event){
 //持续刷新主画布，更新小球位置，砖块以及奖励下落
 $(window).keyup(function(event){
 	if(event.keyCode === 32){
-		if(ball.isOnTheBar)
-			ball.isOnTheBar = false;
-		else{
-			if(ball.y === 311){
-				if(ball.x < 675){
-					ball.angle = 90;
+		if (typeof ball != "undefined")
+		{
+			if(ball.isOnTheBar)
+				ball.isOnTheBar = false;
+			else{
+				if(ball.y === 311){
+					if(ball.x < 675){
+						ball.angle = 90;
+					}
+					else{
+						ball.angle = 270;
+					}
 				}
-				else{
-					ball.angle = 270;
+				else if(ball.y < 311){
+					ball.angle = Math.atan((675 - ball.x) / (ball.y - 311)) * 180 / Math.PI;
+					ball.angle += 180;
+				}
+				else if(ball.y > 311){
+					ball.angle = Math.atan((675 - ball.x) / (ball.y - 311)) * 180 / Math.PI;
 				}
 			}
-			else if(ball.y < 311){
-				ball.angle = Math.atan((675 - ball.x) / (ball.y - 311)) * 180 / Math.PI;
-				ball.angle += 180;
+		}
+
+		if (typeof ball1 != "undefined")
+		{
+			if(ball1.isOnTheBar)
+				ball1.isOnTheBar = false;
+			else{
+				if(ball1.y === 311){
+					if(ball1.x < 675){
+						ball1.angle = 90;
+					}
+					else{
+						ball1.angle = 270;
+					}
+				}
+				else if(ball1.y < 311){
+					ball1.angle = Math.atan((675 - ball1.x) / (ball1.y - 311)) * 180 / Math.PI;
+					ball1.angle += 180;
+				}
+				else if(ball1.y > 311){
+					ball1.angle = Math.atan((675 - ball1.x) / (ball1.y - 311)) * 180 / Math.PI;
+				}
 			}
-			else if(ball.y > 311){
-				ball.angle = Math.atan((675 - ball.x) / (ball.y - 311)) * 180 / Math.PI;
-			}
+		}
+
+		if (typeof ball2 != "undefined")
+		{
+			if(ball2.isOnTheBar)
+				ball2.isOnTheBar = false;
+			else{
+				if(ball2.y === 311){
+					if(ball2.x < 675){
+						ball2.angle = 90;
+					}
+					else{
+						ball2.angle = 270;
+					}
+				}
+				else if(ball2.y < 311){
+					ball2.angle = Math.atan((675 - ball2.x) / (ball2.y - 311)) * 180 / Math.PI;
+					ball2.angle += 180;
+				}
+				else if(ball2.y > 311){
+					ball2.angle = Math.atan((675 - ball2.x) / (ball2.y - 311)) * 180 / Math.PI;
+				}
+			}	
 		}
 	}
 	if(event.keyCode === 13){
@@ -1067,6 +1116,20 @@ $(window).keyup(function(event){
 			window.cancelAnimationFrame(animationID_in_1);
 			window.cancelAnimationFrame(animationID_2);	
 			window.cancelAnimationFrame(animationID_in_2);
+			if (bonusAdded)
+			{
+				window.cancelAnimationFrame(animationID_Bonus);
+				window.cancelAnimationFrame(animationID_in_Bonus);
+			}
+
+			if (ballsAdded)
+			{
+				window.cancelAnimationFrame(animationID_Ball1);
+				window.cancelAnimationFrame(animationID_in_Ball1);
+				window.cancelAnimationFrame(animationID_Ball2);	
+				window.cancelAnimationFrame(animationID_in_Ball2);
+			}
+
 			center_cxt.save();
 			center_cxt.rotate(-bar.angle * Math.PI / 180);
 			center_cxt.fillStyle = 'white';
@@ -1078,10 +1141,21 @@ $(window).keyup(function(event){
 			isPause = false;
 			animationID_1 = window.requestAnimationFrame(MainUpdate);
 			animationID_2 = window.requestAnimationFrame(CenterRotate);
+			if (bonusAdded)
+			{
+				animationID_Bonus = window.requestAnimationFrame(BonusRotate);
+			}
+
+			if (ballsAdded)
+			{
+				animationID_Ball1 = window.requestAnimationFrame(BallOneUpdate);
+				animationID_Ball2 = window.requestAnimationFrame(BallTwoUpdate);
+			}
 			drawCenter();
 		}
 	}
 });
+
 //===========================================动画设置===============================================
 //第一个小球ball的动画
 function MainUpdate(){
