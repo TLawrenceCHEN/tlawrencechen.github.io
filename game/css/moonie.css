@@ -1,3 +1,11 @@
+@font-face{
+	font-family: xingkai;
+	src: url('../font/xingkai.ttf');
+}
+@font-face{
+	font-family: buxton;
+	src: url('../font/BuxtonSketch.ttf');
+}
 body{
 	background-image: url('../image/bg.jpg');
 }
@@ -5,4 +13,111 @@ canvas{
 	position: absolute;
 	left: 0px;
 	top: 0px;
+}
+#beginButton{
+	font-family: xingkai;
+	font-size: 40px;
+	color: white;
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	left: 575px;
+	top: 265px;
+	background-color: transparent;
+	border: 3px solid white;
+	border-radius: 10px;
+	z-index: 1;
+	cursor: pointer;
+}
+#help{
+	font-family: xingkai;
+	font-size: 40px;
+	color: white;
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	left: 575px;
+	top: 410px;
+	background-color: transparent;
+	border: 3px solid white;
+	border-radius: 10px;
+	z-index: 1;
+	cursor: pointer;
+}
+#next{
+	display: none;
+	font-family: xingkai;
+	font-size: 40px;
+	color: white;
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	left: 700px;
+	top: 500px;
+	background-color: transparent;
+	border: 3px solid white;
+	border-radius: 10px;
+	z-index: 1;
+	cursor: pointer;
+}
+#back{
+	display: none;
+	font-family: xingkai;
+	font-size: 40px;
+	color: white;
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	left: 450px;
+	top: 500px;
+	background-color: transparent;
+	border: 3px solid white;
+	border-radius: 10px;
+	z-index: 1;
+	cursor: pointer;
+}
+#infoLeft{
+	padding: 10px;
+	font-family: xingkai;
+	font-size: 25px;
+	color: black;
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	left: 220px;
+	top: 230px;
+	background-color: white;
+	border: 3px solid white;
+	border-radius: 10px;
+	z-index: 1;
+}
+#infoRight{
+	padding: 10px;
+	font-family: xingkai;
+	font-size: 18px;
+	color: black;
+	width: 300px;
+	height: 300px;
+	position: absolute;
+	left: 800px;
+	top: 230px;
+	background-color: white;
+	border: 3px solid white;
+	border-radius: 10px;
+	z-index: 1;
+}
+#removeMusic{
+	font-family: xingkai;
+	color: white;
+	font-size: 16px;
+	background-color: transparent;
+	border: 3px solid white;
+	border-radius: 10px;
+	z-index: 1;
+	cursor: pointer;
+}
+#life{
+	font-family: xingkai;
+	font-size: 25px;
+	color: white;
 }

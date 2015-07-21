@@ -7,11 +7,19 @@
 		<script src='js/jquery-1.11.3.min.js'></script>
 	</head>
 	<body>
+		<img id='pass' src='image/pass.png' style="z-index: 2; position: fixed; left: 675px; top: 311px; width: 0px; height: 0px; display: none" />
+		<img id='over' src='image/over.png' style="z-index: 2; position: fixed; left: 675px; top: 311px; width: 0px; height: 0px; display: none" />
+		<button id="next">Next →</button>
+		<button id="back">← Back</button>
+		<canvas id='begin' width='1365px' height='666px'></canvas>
 		<canvas id='myCanvas' width='1360px' height='663px'></canvas>
 		<canvas id='centerCanvas' width='300px' height='300px'></canvas>
+		<audio src="music/bgMusic.mp3" controls="controls" style="top:630px;position:absolute;" autoplay="autoplay" loop="loop">播放音乐</audio>
+		<audio src="music/crash.wav" id="crashMusic"></audio>
+		<button id="removeMusic" style="top:632px;left:320px;position:absolute" onclick="removeCrashMusic()">关闭音效</button>
+		<span id="life" style="top:632px;left:420px;position:absolute">生命：</span>
 		<script src='js/moonie_canvas.js'></script>
-		<script>
-			initGame();
-		</script>
+		<script src='js/moonie_begin.js'></script>
+		<script src='js/moonie_transition.js'></script>
 	</body>
 </html>
