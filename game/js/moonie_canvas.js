@@ -1,6 +1,6 @@
 //===========================================全局变量设定===============================================
 //游戏结束标志
-var isGameOver;
+var isGameOver = true;
 //游戏暂停标志
 var isPause;
 //关卡变量
@@ -1004,35 +1004,37 @@ function changeBallAngle(ballAngle,direction)
 //===========================================事件监听===============================================
 //鼠标移动事件，确定鼠标的方位以及托条需要转过的角度
 $(window).mousemove(function(event){
-	var mouseX = event.pageX;
-	var mouseY = event.pageY;
-	var targetAngle = 0;
-	if(mouseY === 311){
-		if(mouseX > 675){
-			targetAngle = Math.PI / 2;
+	if(!isGameOver){
+		var mouseX = event.pageX;
+		var mouseY = event.pageY;
+		var targetAngle = 0;
+		if(mouseY === 311){
+			if(mouseX > 675){
+				targetAngle = Math.PI / 2;
+			}
+			else{
+				targetAngle = -Math.PI / 2;
+			}
+		}
+		else if(mouseY < 311){
+			targetAngle = Math.atan((mouseX - 675) / (311 - mouseY));
 		}
 		else{
-			targetAngle = -Math.PI / 2;
+			targetAngle = Math.atan((mouseX - 675) / (mouseY - 311));
+			if(targetAngle < 0){
+				targetAngle = -targetAngle - Math.PI;
+			}
+			else{
+				targetAngle = Math.PI - targetAngle;
+			}
 		}
-	}
-	else if(mouseY < 311){
-		targetAngle = Math.atan((mouseX - 675) / (311 - mouseY));
-	}
-	else{
-		targetAngle = Math.atan((mouseX - 675) / (mouseY - 311));
-		if(targetAngle < 0){
-			targetAngle = -targetAngle - Math.PI;
+		bar.translateAngle = Math.round(targetAngle * 180 / Math.PI) - bar.angle;
+		if(bar.translateAngle > 180){
+			bar.translateAngle -= 360;
 		}
-		else{
-			targetAngle = Math.PI - targetAngle;
+		else if(bar.translateAngle < -180){
+			bar.translateAngle += 360;
 		}
-	}
-	bar.translateAngle = Math.round(targetAngle * 180 / Math.PI) - bar.angle;
-	if(bar.translateAngle > 180){
-		bar.translateAngle -= 360;
-	}
-	else if(bar.translateAngle < -180){
-		bar.translateAngle += 360;
 	}
 });
 //持续刷新主画布，更新小球位置，砖块以及奖励下落
