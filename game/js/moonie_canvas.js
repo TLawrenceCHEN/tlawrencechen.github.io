@@ -225,7 +225,7 @@ function Ball(angle, x, y, radius){
 	this.x = x || 675 - this.radius;	//小球的x坐标，默认值为663
 	this.y = y || 212 - 2 * this.radius;	//小球的y坐标，默认值为188
 	this.isOnTheBar = true;	//小球初始状态在托条上
-	this.speed = 3;	//小球的速度为10px/25ms = 0.4px/ms
+	this.speed = 3;	//小球的速度为3px/16.667ms
 	this.needToChangeAngle = true;
 }
 
@@ -491,7 +491,7 @@ function barCollisionDetect_Ball(ball){
 			window.cancelAnimationFrame(animationID_1);
 			window.cancelAnimationFrame(animationID_in_1);
 			ball = undefined;
-			if (totalBall == 0)
+			if (totalBall === 0)
 			{
 				isGameOver = true;
 				GameOver();
@@ -623,7 +623,7 @@ function barCollisionDetect_Ball1(ball){
 			window.cancelAnimationFrame(animationID_Ball1);
 			window.cancelAnimationFrame(animationID_in_Ball1);
 			ball1 = undefined;
-			if (totalBall == 0)
+			if (totalBall === 0)
 			{
 				isGameOver = true;
 				GameOver();
@@ -755,7 +755,7 @@ function barCollisionDetect_Ball2(ball){
 			window.cancelAnimationFrame(animationID_Ball2);
 			window.cancelAnimationFrame(animationID_in_Ball2);
 			ball2 = undefined;
-			if (totalBall == 0)
+			if (totalBall === 0)
 			{
 				isGameOver = true;
 				GameOver();
@@ -1161,7 +1161,6 @@ $(window).keyup(function(event){
 			{
 				animationID_Bonus = window.requestAnimationFrame(BonusRotate);
 			}
-			debugger;
 			if (typeof ball != "undefined")
 			{
 				animationID_1 = window.requestAnimationFrame(MainUpdate);
@@ -1198,7 +1197,7 @@ function MainUpdate(){
 			totalBall = totalBall - 1;
 			cxt.clearRect(curX, curY, 2 * ball.radius, 2 * ball.radius);
 			ball = undefined;
-		    if (totalBall == 0)
+		    if (totalBall === 0)
 		    {
 		    	isGameOver = true;
 		    	GameOver();
@@ -1214,7 +1213,7 @@ function MainUpdate(){
 			ball.y += deltaY;
 			judgeCrashBlock = crashBlock(ball, ball.x, ball.y, deltaX, deltaY);
 		}
-		else if(isGameOver){
+		else if(isGameOver && totalBall === 0){
 			return;
 		}
 		else{
@@ -1289,7 +1288,7 @@ function BallOneUpdate(){
 			totalBall = totalBall - 1;
 			cxt.clearRect(curX, curY, 2 * ball1.radius, 2 * ball1.radius);
 			ball1 = undefined;
-		    if (totalBall == 0)
+		    if (totalBall === 0)
 		    {
 		    	isGameOver = true;
 		    	GameOver();
@@ -1305,7 +1304,7 @@ function BallOneUpdate(){
 			ball1.y += deltaY;
 			judgeCrashBlock = crashBlock(ball1, ball1.x, ball1.y, deltaX, deltaY);
 		}
-		else if(isGameOver){
+		else if(isGameOver && totalBall === 0){
 			return;
 		}
 		else{
@@ -1380,7 +1379,7 @@ function BallTwoUpdate(){
 			totalBall = totalBall - 1;
 		    cxt.clearRect(curX, curY, 2 * ball2.radius, 2 * ball2.radius);
 		    ball2 = undefined;
-		    if (totalBall == 0)
+		    if (totalBall === 0)
 		    {
 		    	isGameOver = true;
 		    	GameOver();
@@ -1396,7 +1395,7 @@ function BallTwoUpdate(){
 			ball2.y += deltaY;
 			judgeCrashBlock = crashBlock(ball2, ball2.x, ball2.y, deltaX, deltaY);
 		}
-		else if(isGameOver){
+		else if(isGameOver && totalBall === 0){
 			return;
 		}
 		else{
