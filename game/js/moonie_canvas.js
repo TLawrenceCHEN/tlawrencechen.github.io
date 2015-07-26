@@ -4,7 +4,7 @@ var isGameOver = true;
 //游戏暂停标志
 var isPause;
 //关卡变量
-var curLevel = 1;
+var curLevel = 5;
 //砖块总数
 var blockNum = 0;
 //指示界面中是否有Bonus
