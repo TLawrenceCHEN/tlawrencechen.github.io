@@ -2,7 +2,7 @@
 var g_row = 60;
 var g_column = 130;
 var g_cellSize = 600 / g_row;
-var g_fps = 0.5;
+var g_fps = 10;
 var g_density = 0.4;
 var canvas = $("#myCanvas");
 var isMouseDown = false;
