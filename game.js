@@ -57,25 +57,13 @@ function Game(row, column, cellSize){
 		for(var k = 0; k < this.column; k++){
 			for(var l = 0; l < this.row; l++){
 				var rand = Math.random();
-				// if(!this.wall[l + 2][k + 2] && rand < g_density){
-				// 	ctx.fillStyle = "pink";
-				// 	ctx.fillRect(k * this.cellSize + 0.8, l * this.cellSize + 0.8, 
-				// 				this.cellSize - 1.9, this.cellSize - 1.9);
-				// 	this.map[l + 2][k + 2] = true;
-				// 	this.queue_row.unshift(l + 2);
-				// 	this.queue_column.unshift(k + 2);
-				// }
-				if(this.map[l + 2][k + 2]){
+				if(!this.wall[l + 2][k + 2] && rand < g_density){
 					ctx.fillStyle = "pink";
 					ctx.fillRect(k * this.cellSize + 0.8, l * this.cellSize + 0.8, 
-				 				this.cellSize - 1.9, this.cellSize - 1.9);
+								this.cellSize - 1.9, this.cellSize - 1.9);
+					this.map[l + 2][k + 2] = true;
 					this.queue_row.unshift(l + 2);
 					this.queue_column.unshift(k + 2);
-				}
-				if(this.wall[l + 2][k + 2]){
-					this.ctx.fillStyle = "yellow";
-					this.ctx.fillRect(k * this.cellSize + 0.8, l * this.cellSize + 0.8, 
-									this.cellSize - 1.9, this.cellSize - 1.9);
 				}
 			}
 		}
@@ -195,21 +183,8 @@ for(var i = 0; i < 5; i++){
 		game.map[i + 2][j + 2] = false;
 	}
 }
-game.map[0 + 2][1 + 2] = true;
-game.map[0 + 2][2 + 2] = true;
-game.map[1 + 2][2 + 2] = true;
-game.map[1 + 2][4 + 2] = true;
-game.map[2 + 2][0 + 2] = true;
-game.map[2 + 2][1 + 2] = true;
-game.map[2 + 2][3 + 2] = true;
-game.map[2 + 2][4 + 2] = true;
-game.map[3 + 2][0 + 2] = true;
-game.map[3 + 2][2 + 2] = true;
-game.map[4 + 2][2 + 2] = true;
-game.map[4 + 2][3 + 2] = true;
+var game = new Game(g_row, g_column, g_cellSize);
 game.init();
-// var game = new Game(g_row, g_column, g_cellSize);
-// game.init();
 //不断刷新
 function refresh(){
 	game.transit();
