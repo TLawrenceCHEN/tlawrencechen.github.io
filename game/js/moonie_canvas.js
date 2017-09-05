@@ -67,7 +67,7 @@ function initGame(){
 	//重置砖块数
 	blockNum = 0;
 	//设置显示生命数
-	$('#life').text('生命：' + lives);
+	$('#life').text('Lives：' + lives);
 	//设置游戏结束标志
 	isGameOver = false;
 	//设置游戏暂停标志
@@ -153,7 +153,7 @@ function initGame(){
 
 //生命值未用完之前加载
 function initOldGame(){
-	$('#life').text('生命：' + lives);
+	$('#life').text('Lives：' + lives);
 	//设置游戏结束标志
 	isGameOver = false;
 	//设置主画布
@@ -1616,15 +1616,15 @@ function removeCrashMusic()
 {
 	var music = document.getElementById("crashMusic");
 	var buttonId = document.getElementById("removeMusic");
-	if (buttonId.innerHTML == "关闭音效")
+	if (buttonId.innerHTML == "Mute")
 	{
 		music.src = '';
-		buttonId.innerHTML = "打开音效";
+		buttonId.innerHTML = "Audio";
 	}
 	else
 	{
 		music.src = 'music/crash.wav';
-		buttonId.innerHTML = "关闭音效";
+		buttonId.innerHTML = "Mute";
 	}
 }
 
