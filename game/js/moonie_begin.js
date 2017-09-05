@@ -13,28 +13,28 @@ title.css({
 $('body').append(title);
 //获取开始按钮
 var beginButton = $('<button id="beginButton"/>');
-beginButton.text('开始游戏');
+beginButton.text('Play');
 $('body').append(beginButton);
 //获取帮助按钮
 var helpButton = $('<button id="help"/>');
-helpButton.text('帮助');
+helpButton.text('Help');
 $('body').append(helpButton);
 //获取帮助信息
 var helpInfoLeft = $('<div id="infoLeft"/>');
 helpInfoLeft.css('display', 'none');
-helpInfoLeft.append('<p>SPACE：释放小球/拉回小球</p>').
-			append('<p>ENTER: 暂停游戏</p>').
-			append('<p>鼠标移动控制托条方位</p>').
-			append('<p>小球落入中心黑洞或逃离边界之外损失生命。总计4条生命，全部损失游戏结束</p>');
+helpInfoLeft.append('<p>SPACE：Release/Pull back the ball</p>').
+			append('<p>ENTER: Pause</p>').
+			append('<p>Use mouse to move the bar</p>').
+			append('<p>Lose 1 life when the ball falls into the black hole. Total 4 lives</p>');
 $('body').append(helpInfoLeft);
 var helpInfoRight = $('<div id="infoRight"/>');
 helpInfoRight.css('display', 'none');
-helpInfoRight.append('<p>道具简介：</p>').
-			append('<p><img src="image/dead.png"/>：获得后立即失去一条生命</p>').
-			append('<p><img src="image/speedup.png"/>：获得后小球加速</p>').
-			append('<p><img src="image/slowdown.png"/>：获得后小球减速</p>').
-			append('<p><img src="image/three.png"/>：获得后分裂为3个小球</p>').
-			append('<p><img src="image/cross.png"/>：获得后小球碰撞砖块不改变角度</p>');
+helpInfoRight.append('<p>Tools：</p>').
+			append('<p><img src="image/dead.png"/>：Lose 1 life immediately</p>').
+			append('<p><img src="image/speedup.png"/>：Accelerate the ball</p>').
+			append('<p><img src="image/slowdown.png"/>：Decelerate the ball</p>').
+			append('<p><img src="image/three.png"/>：Split to 3 balls</p>').
+			append('<p><img src="image/cross.png"/>：Ball does not strike back</p>');
 $('body').append(helpInfoRight);
 //绘制开始界面
 drawBegin();
