@@ -67,7 +67,7 @@ function initGame(){
 	//重置砖块数
 	blockNum = 0;
 	//设置显示生命数
-	$('#life').text('Lives：' + lives);
+	$('#life').text('Lives: ' + lives);
 	//设置游戏结束标志
 	isGameOver = false;
 	//设置游戏暂停标志
@@ -153,7 +153,7 @@ function initGame(){
 
 //生命值未用完之前加载
 function initOldGame(){
-	$('#life').text('Lives：' + lives);
+	$('#life').text('Lives: ' + lives);
 	//设置游戏结束标志
 	isGameOver = false;
 	//设置主画布
